@@ -1,0 +1,11 @@
+{
+  "name": "onlinevideostream",
+  "version": "1.0.0",
+  "description": "an online video streaming webapp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nirav Pansheriya",
+  "license": "ISC"
+}
