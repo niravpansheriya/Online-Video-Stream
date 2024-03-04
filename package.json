@@ -1,11 +1,16 @@
 {
-  "name": "onlinevideostream",
-  "version": "1.0.0",
-  "description": "an online video streaming webapp",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Nirav Pansheriya",
-  "license": "ISC"
+    "name": "onlinevideostream",
+    "version": "1.0.0",
+    "description": "an online video streaming webapp",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "nodemon src/index.js"
+    },
+    "author": "Nirav Pansheriya",
+    "license": "ISC",
+    "devDependencies": {
+        "nodemon": "^3.1.0"
+    }
 }
