@@ -4,24 +4,27 @@ import { User } from "../models/user.model.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
 const registerUser = asyncHandler(async(req, res) => {
-    res.status(200).json({
-        message: "ok"
-    })
+    // res.status(200).json({
+    //     message: "ok"
+    // })
 
     // get the details from front end
-    const { fullname, email, username, password } = req.body
+    const {fullName, username, email, password } = req.body
+    console.log("fullName:", fullName)
+    console.log("username:", username)
     console.log("email:", email)
+    console.log("password:", password)
 
     // validate the received details
     if (
-        [fullname, email, username, password].some((field) => (field !== null && field !== undefined && field.trim() === "")) // checks if any field is empty
+        [fullName, username, email, password].some((field) => (field !== null && field !== undefined && field.trim() === "")) // checks if any field is empty
     ) {
         throw new ApiError(400, "All fields are required")
     }
     // some more validations
 
     // check if user already exist or not
-    const userExist = User.findOne({
+    const userExist = await User.findOne({
         $or: [{ username }, { email }]
     })
 
@@ -30,10 +33,10 @@ const registerUser = asyncHandler(async(req, res) => {
     }
 
     const user = await User.create({
-        fullname,
+        fullName,
+        username,
         email,
         password,
-        username
     })
 
     const userCreated = await User.findById(user._id).select(
